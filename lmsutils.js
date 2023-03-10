@@ -101,6 +101,64 @@
           },
           '---',
           {
+            opcode: 'trueFalseBoolean',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[TRUEFALSE]',
+            arguments: {
+              TRUEFALSE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'true',
+                menu: 'trueFalseMenu'
+              }
+            }
+          },
+          {
+            opcode: 'notEqualTo',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[INPUTA] ≠ [INPUTB]',
+            arguments: {
+              INPUTA: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              INPUTB: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'binana'
+              }
+            }
+          },
+          {
+            opcode: 'moreThanEqual',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[INPUTA] ≥ [INPUTB]',
+            arguments: {
+              INPUTA: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '16'
+              },
+              INPUTB: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '25'
+              }
+            }
+          },
+          {
+            opcode: 'lessThanEqual',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[INPUTA] ≤ [INPUTB]',
+            arguments: {
+              INPUTA: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '16'
+              },
+              INPUTB: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '25'
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'screenReporter',
             blockType: Scratch.BlockType.REPORTER,
             text: 'screen [DROPDOWN]',
@@ -154,6 +212,17 @@
             }
           },
           {
+            opcode: 'commentCommand',
+            blockType: Scratch.BlockType.COMMAND,
+            text: '// [STRING]',
+            arguments: {
+              STRING: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'comment'
+              }
+            }
+          },
+          {
             opcode: 'commentString',
             blockType: Scratch.BlockType.REPORTER,
             text: '// [INPUTA] [INPUTB]',
@@ -167,9 +236,36 @@
               defaultValue: 'input'
               }
             }
+          },
+          {
+            opcode: 'commentBool',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '// [INPUTA] [INPUTB]',
+            arguments: {
+              INPUTA: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'comment'
+              },
+              INPUTB: {
+              type: Scratch.ArgumentType.BOOLEAN,
+              }
+            }
           }
         ],
         menus: {
+          trueFalseMenu: {
+            acceptReporters: true,
+            items: [
+              {
+                text: 'true',
+                value: 'true'
+              },
+              {
+                text: 'false',
+                value: 'false'
+              }
+            ]
+          },
           screenReporterMenu: {
             acceptReporters: true,
             items: [
@@ -234,6 +330,22 @@
       }
     }
 
+    trueFalseBoolean(args) {
+      return args.TRUEFALSE;
+    }
+
+    notEqualTo(args) {
+      return (args.INPUTA != args.INPUTB)
+    }
+
+    moreThanEqual(args) {
+      return (args.INPUTA >= args.INPUTB)
+    }
+
+    lessThanEqual(args) {
+      return (args.INPUTA <= args.INPUTB)
+    }
+
     screenReporter(args) {
       if (args.DROPDOWN === 'width') {
         return screen.width;
@@ -261,6 +373,18 @@
         return navigator.clipboard.readText();
       }
       return '';
+    }
+
+    commentLoop(args) {
+      return '';
+    }
+   
+    commentString(args) {
+      return args.INPUTB;
+    }
+    
+    commentBool(args) {
+      return args.INPUTB;
     }
   }
   Scratch.extensions.register(new LMSUtils());
