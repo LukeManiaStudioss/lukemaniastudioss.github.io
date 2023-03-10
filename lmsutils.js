@@ -140,6 +140,33 @@
             opcode: 'readClipboard',
             blockType: Scratch.BlockType.REPORTER,
             text: 'clipboard'
+          },
+          '---',
+          {
+	      opcode: 'commentLoop',
+            blockType: Scratch.BlockType.LOOP,
+            text: '// [STRING]',
+            arguments: {
+              STRING: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'comment'
+              }
+            }
+          },
+          {
+            opcode: 'commentString',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '// [INPUTA] [INPUTB]',
+            arguments: {
+              INPUTA: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'comment'
+              },
+              INPUTB: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'input'
+              }
+            }
           }
         ],
         menus: {
