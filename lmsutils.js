@@ -10,6 +10,7 @@
         color1: '#00e8ba',
         color2: '#00c7a9',
         blockIconURI: blockIconURI,
+	docsURI: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
         blocks: [
           {
             opcode: 'equalsExactly',
