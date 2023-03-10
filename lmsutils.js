@@ -123,6 +123,7 @@
               }
             }
           },
+          '---',
           {
             opcode: 'setClipboard',
             blockType: Scratch.BlockType.COMMAND,
