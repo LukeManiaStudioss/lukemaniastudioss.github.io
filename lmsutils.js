@@ -450,6 +450,7 @@
     reverseString(args) {
       var input = args.STRING;
       var splitInput = input.split("");
+    }
 
     trueFalseBoolean(args) {
       return args.TRUEFALSE;
