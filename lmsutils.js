@@ -439,6 +439,8 @@
     stringIf(args) {
       if (args.BOOLEAN) {
         return args.INPUTA;
+      } else {
+        return '';
       }
     }
 
