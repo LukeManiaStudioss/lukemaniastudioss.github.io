@@ -101,6 +101,49 @@
           },
           '---',
           {
+            opcode: 'caseSwitchBlock',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[STRING] to [CASE]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'harry no'
+              },
+              CASE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'uppercase',
+                menu: 'caseSwitchMenu'
+              }
+            }
+          },
+          {
+            opcode: 'reverseString',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'reverse [STRING]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'prawobrut'
+              }
+            }
+          },
+          {
+            opcode: 'convertString',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'convert [STRING] to [DROPDOWN]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'Apples!'
+              },
+              DROPDOWN: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'base64'
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'trueFalseBoolean',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[TRUEFALSE]',
@@ -179,6 +222,67 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'width',
                 menu: 'screenReporterMenu'
+              }
+            }
+          },
+          '---',
+          {
+            opcode: 'norBoolean',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[INPUTA] nor [INPUTB]',
+            arguments: {
+              INPUTA: {
+                type: Scratch.ArgumentType.BOOLEAN,
+                defaultValue: ''
+              },
+              INPUTB: {
+                type: Scratch.ArgumentType.BOOLEAN,
+                defaultValue: ''
+              }
+            }
+          },
+          {
+            opcode: 'xorBoolean',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[INPUTA] xor [INPUTB]',
+            arguments: {
+              INPUTA: {
+                type: Scratch.ArgumentType.BOOLEAN,
+                defaultValue: ''
+              },
+              INPUTB: {
+                type: Scratch.ArgumentType.BOOLEAN,
+                defaultValue: ''
+              }
+            }
+          },
+          {
+            opcode: 'xnorBoolean',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[INPUTA] xnor [INPUTB]',
+            arguments: {
+              INPUTA: {
+                type: Scratch.ArgumentType.BOOLEAN,
+                defaultValue: ''
+              },
+              INPUTB: {
+                type: Scratch.ArgumentType.BOOLEAN,
+                defaultValue: ''
+              }
+            }
+          },
+          {
+            opcode: 'nandBoolean',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[INPUTA] nand [INPUTB]',
+            arguments: {
+              INPUTA: {
+                type: Scratch.ArgumentType.BOOLEAN,
+                defaultValue: ''
+              },
+              INPUTB: {
+                type: Scratch.ArgumentType.BOOLEAN,
+                defaultValue: ''
               }
             }
           },
@@ -292,6 +396,19 @@
               }
             ]
           },
+          caseSwitchMenu: {
+            acceptReporters: true,
+            items: [
+              {
+                text: 'uppercase',
+                value: 'uppercase'
+              },
+              {
+                text: 'lowercase',
+                value: 'lowercase'
+              }
+            ]
+          },
         }
       };
     }
@@ -330,6 +447,10 @@
       }
     }
 
+    reverseString(args) {
+      var input = args.STRING;
+      var splitInput = input.split("");
+
     trueFalseBoolean(args) {
       return args.TRUEFALSE;
     }
@@ -344,6 +465,22 @@
 
     lessThanEqual(args) {
       return (args.INPUTA <= args.INPUTB)
+    }
+
+    norBoolean(args) {
+      return !(args.INPUTA || args.INPUTB)
+    }
+
+    xorBoolean(args) {
+      return (args.INPUTA !== args.INPUTB);
+    }
+
+    xnorBoolean(args) {
+      return (args.INPUTA === args.INPUTB);
+    }
+
+    nandBoolean(args) {
+      return !(args.INPUTA && args.INPUTB);
     }
 
     screenReporter(args) {
