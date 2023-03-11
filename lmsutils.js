@@ -39,7 +39,7 @@
             }
           },
           '---',
-	  {
+	    {
             opcode: 'colourHex',
             blockType: Scratch.BlockType.REPORTER,
             text: '[COLOUR]',
@@ -48,12 +48,27 @@
                 type: Scratch.ArgumentType.COLOR,
                 defaultValue: '#696969'
               }
-	    }
+	      }
           },
-	  {
-	    opcode: 'stringIfElse',
-	    blockType: Scratch.BlockType.REPORTER,
-	    text: 'if [BOOLEAN] then [INPUTA] else [INPUTB]',
+	    {
+	      opcode: 'stringIf',
+	      blockType: Scratch.BlockType.REPORTER,
+	      text: 'if [BOOLEAN] then [INPUTA]',
+            arguments: {
+              BOOLEAN: {
+	        type: Scratch.ArgumentType.BOOLEAN,
+                defaultValue: ''
+              },
+              INPUTA: {
+	        type: Scratch.ArgumentType.STRING,
+                defaultValue: 'Pogchamp'
+              }
+	      }
+          },
+	    {
+	      opcode: 'stringIfElse',
+	      blockType: Scratch.BlockType.REPORTER,
+	      text: 'if [BOOLEAN] then [INPUTA] else [INPUTB]',
             arguments: {
               BOOLEAN: {
 	        type: Scratch.ArgumentType.BOOLEAN,
@@ -67,10 +82,10 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'Moedje'
               }
-	    }
+	      }
           },
           {
-	    opcode: 'lettersToOf',
+	      opcode: 'lettersToOf',
             blockType: Scratch.BlockType.REPORTER,
             text: 'letters [INPUTA] to [INPUTB] of [STRING]',
             arguments: {
@@ -420,7 +435,13 @@
     colourHex(args) {
       return args.COLOUR;
     }
-  
+    
+    stringIf(args) {
+      if (args.BOOLEAN) {
+        return args.INPUTA;
+      }
+    }
+
     stringIfElse(args) {
       if (args.BOOLEAN) {
         return args.INPUTA;
@@ -450,7 +471,7 @@
     reverseString(args) {
       var input = args.STRING;
       var splitInput = input.split("");
-    }
+    {
 
     trueFalseBoolean(args) {
       return args.TRUEFALSE;
